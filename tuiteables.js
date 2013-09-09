@@ -1,6 +1,7 @@
 var url = window.location;
 tuiteable = /: "([a-zA-Z0-9 ÑñÁÉÍÓÚáéíóú;.,]+)"/g;
-caracteres = tuiteable.text().lenght();
+caracteres = tuiteable.length;
+window.alert(caracteres);
 
 function linkTuiteable(text) {
     return text.replace(
@@ -10,10 +11,7 @@ function linkTuiteable(text) {
 } 
 
 $('#contenido').ready(function(){
-    window.alert(caracteres);
     $('p').each(function() {
-        if (caracteres < 100) {
-            $(this).html(linkTuiteable($(this).html()));
-        }
+        $(this).html(linkTuiteable($(this).html()));
     });
 });
