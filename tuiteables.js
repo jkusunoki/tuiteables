@@ -1,9 +1,8 @@
 var url = window.location;
 tuiteable = /: "([a-zA-Z0-9 ÑñÁÉÍÓÚáéíóú;.,]+)"/g;
-caracteres = tuiteable.length;
-window.alert(caracteres);
+var caracteres = tuiteable.toString();
 
-function linkTuiteable(text) {
+function linkTuiteable(text) { 
     return text.replace(
        tuiteable,
         ': <a class="tuiteable" href="https://twitter.com/share?url='+url+'&amp;text=$1">$1</a>'
@@ -12,6 +11,8 @@ function linkTuiteable(text) {
 
 $('#contenido').ready(function(){
     $('p').each(function() {
-        $(this).html(linkTuiteable($(this).html()));
+        if (caracteres.length < 100) {
+            $(this).html(linkTuiteable($(this).html()));
+        }
     });
 });
